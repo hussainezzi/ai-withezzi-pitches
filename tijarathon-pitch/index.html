@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI with Ezzi - Tijarathon Pitch</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .reveal h1, .reveal h2, .reveal h3 {
+            text-transform: none;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .highlight { color: #00d2ff; font-weight: bold; }
+        .profit { color: #00ff88; font-weight: bold; }
+        
+        .metric-box {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 20px 40px;
+            border-radius: 15px;
+            margin: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .metric-box h3 { margin: 0; font-size: 1.5em; color: #888; }
+        .metric-box h2 { margin: 10px 0 0 0; font-size: 2.5em; color: #fff; }
+
+        .chart-container {
+            width: 80%;
+            margin: 0 auto;
+            height: 400px;
+        }
+
+        @media print {
+            body, .reveal { background: white !important; color: black !important; }
+            .reveal .slides { transform: none !important; width: 100% !important; height: auto !important; }
+            .reveal .slides section { 
+                display: flex !important; 
+                flex-direction: column;
+                justify-content: center;
+                height: 100vh !important; 
+                page-break-after: always !important; 
+                opacity: 1 !important; 
+                visibility: visible !important;
+            }
+            .highlight { color: #0056b3 !important; }
+            .profit { color: #28a745 !important; }
+            .metric-box { border: 2px solid #ccc; background: #f9f9f9; }
+            .metric-box h3 { color: #555; }
+            .metric-box h2 { color: #000; }
+            .controls, .progress, .state-background { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+        <section data-transition="fade">
+            <h3 style="color: #888;">AI with Ezzi</h3>
+            <h1 style="font-size: 3.5em; margin-bottom: 20px;">Invisible Automation.</h1>
+            <h2>Empowering the <span class="highlight">One-Person Business</span>.</h2>
+            <p style="margin-top: 50px; font-size: 1.2em;">
+                Traditional software is dead.<br>We build AI Agent Swarms inside the app your clients already use: <b>WhatsApp</b>.
+            </p>
+        </section>
+
+        <section data-transition="slide">
+            <h2>The Market & The Moat</h2>
+            <p style="font-size: 1.2em; text-align: left; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                <b>Target:</b> Karachi Private Schools (e.g., MSB Haidery) & Wholesalers.<br><br>
+                <b>Problem:</b> Businesses hate learning new clunky apps. Admin work takes 5+ hours daily.<br><br>
+                <b>Solution:</b> The OpenClaw WhatsApp Swarm. An admin sends an Urdu voice note: <i>"Ali paid 5,000 rupees fee."</i><br><br>
+                <b>Result:</b> The AI updates Google Sheets, generates a PDF receipt, and WhatsApps the parent in <span class="profit">4 seconds</span>.
+            </p>
+        </section>
+
+        <section data-transition="zoom">
+            <h2>Unit Economics (Productized SaaS)</h2>
+            <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+                <div class="metric-box">
+                    <h3>Setup Fee</h3>
+                    <h2>100k PKR</h2>
+                </div>
+                <div class="metric-box">
+                    <h3>MRR (License)</h3>
+                    <h2>30k PKR</h2>
+                </div>
+                <div class="metric-box">
+                    <h3>Gross Margin</h3>
+                    <h2 class="profit">80%</h2>
+                </div>
+                <div class="metric-box">
+                    <h3>CAC : LTV</h3>
+                    <h2 class="highlight">1 : 16.4</h2>
+                </div>
+            </div>
+            <p style="font-size: 1em; color: #aaa; margin-top: 20px;">*CAC: 50k PKR | LTV: 820k PKR (24 mo. retention)</p>
+        </section>
+
+        <section data-transition="slide">
+            <h2>The "Geo-Arbitrage" Trajectory</h2>
+            <p style="font-size: 1em; margin-bottom: 30px;">Scaling to high-paying international markets while keeping fulfillment in Pakistan.</p>
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </section>
+
+        <section data-transition="fade">
+            <h1 style="font-size: 4em; margin-bottom: 10px;">The Ask</h1>
+            <h2 class="profit">5,000,000 PKR</h2>
+            <p style="font-size: 1.3em; margin-bottom: 40px; color: #bbb;">For 10% Equity.</p>
+            
+            <ul style="font-size: 1.2em; line-height: 1.8; text-align: left; max-width: 700px; margin: 0 auto;">
+                <li><b>0%</b> on fancy offices.</li>
+                <li><b>40%</b> on Core AI Engineering (Hiring 2 "AI Orchestrators").</li>
+                <li><b>30%</b> on API Infrastructure (OpenClaw, Twilio/WhatsApp).</li>
+                <li><b>30%</b> on Client Acquisition (B2B Ads & Sales).</li>
+            </ul>
+            
+            <p style="margin-top: 50px; font-weight: bold; font-size: 1.3em;">
+                We hit <span class="profit">Break-Even in Month 3</span> at 20 clients.
+            </p>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        progress: true,
+        center: true,
+        hash: true,
+        transition: 'slide'
+    });
+
+    Reveal.on('slidechanged', event => {
+        if(event.indexh === 3) {
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            
+            if(window.myChart) return;
+            
+            window.myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Month 3 (Local)', 'Month 6 (Local)', 'Year 1 (Local + Int)', 'Year 2 (Geo-Arbitrage)'],
+                    datasets: [
+                        {
+                            label: 'Monthly Recurring Revenue (MRR) in PKR',
+                            data: [600000, 1500000, 4500000, 12000000],
+                            backgroundColor: 'rgba(0, 255, 136, 0.7)',
+                            borderColor: 'rgba(0, 255, 136, 1)',
+                            borderWidth: 2,
+                            borderRadius: 5
+                        },
+                        {
+                            label: 'Setup Fees / Capital',
+                            data: [2000000, 3000000, 5000000, 8000000],
+                            backgroundColor: 'rgba(0, 210, 255, 0.7)',
+                            borderColor: 'rgba(0, 210, 255, 1)',
+                            borderWidth: 2,
+                            borderRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#ccc' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#ccc', font: { size: 14 } }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#fff' } }
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
