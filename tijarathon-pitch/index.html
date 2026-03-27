@@ -16,7 +16,6 @@
             letter-spacing: -0.02em;
         }
         
-        /* Adjusted font sizes for laptop screen */
         .reveal h1 { font-size: 2.8em; margin-bottom: 10px; }
         .reveal h2 { font-size: 1.8em; margin-bottom: 15px; }
         .reveal h3 { font-size: 1.3em; margin-bottom: 10px; }
@@ -24,23 +23,52 @@
 
         .highlight { color: #00d2ff; font-weight: bold; }
         .profit { color: #00ff88; font-weight: bold; }
+        .danger { color: #ff4444; font-weight: bold; }
         
-        .metric-box {
-            display: inline-block;
+        /* Pricing Tiers */
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .tier-box {
             background: rgba(255,255,255,0.05);
-            padding: 15px 25px;
-            border-radius: 12px;
-            margin: 10px;
             border: 1px solid rgba(255,255,255,0.2);
-            transition: transform 0.3s, background 0.3s;
+            border-radius: 12px;
+            padding: 20px;
+            width: 30%;
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
         }
-        .metric-box:hover {
+        .tier-box:hover {
+            transform: translateY(-10px);
+            border-color: #00d2ff;
+        }
+        .tier-box.popular {
+            border-color: #00ff88;
+            background: rgba(0,255,136,0.05);
             transform: scale(1.05);
-            background: rgba(255,255,255,0.15);
-            cursor: pointer;
         }
-        .metric-box h3 { margin: 0; font-size: 1.1em; color: #888; }
-        .metric-box h2 { margin: 5px 0 0 0; font-size: 1.8em; color: #fff; }
+        .tier-box.popular:hover { transform: scale(1.08) translateY(-10px); }
+        .tier-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00ff88;
+            color: #000;
+            font-size: 0.7em;
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+        .tier-box h3 { margin: 0 0 10px 0; font-size: 1.4em; color: #fff; }
+        .tier-box .price { font-size: 1.6em; font-weight: bold; margin-bottom: 5px; color: #00d2ff; }
+        .tier-box .setup { font-size: 0.9em; color: #888; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .tier-box ul { font-size: 0.8em; text-align: left; padding-left: 20px; margin-bottom: 0; color: #ccc; }
+        .tier-box ul li { margin-bottom: 8px; }
 
         .fund-box {
             background: rgba(255,255,255,0.05);
@@ -50,44 +78,26 @@
             margin: 8px;
             transition: all 0.3s ease;
         }
-        .fund-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
+        .fund-box:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .fund-box h3 { font-size: 1.6em !important; margin: 0; }
         .fund-box p { font-size: 0.9em !important; margin: 5px 0 0 0; }
 
         .chart-container {
-            width: 90%;
+            width: 95%;
             margin: 0 auto;
-            height: 350px; /* Reduced height to fit laptop screens */
+            height: 380px;
         }
 
-        /* Container for Slide 2 to keep it tight */
-        .content-box {
-            text-align: left;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1em;
-        }
+        .content-box { text-align: left; max-width: 800px; margin: 0 auto; font-size: 1.1em; }
 
         @media print {
             body, .reveal { background: white !important; color: black !important; }
             .reveal .slides { transform: none !important; width: 100% !important; height: auto !important; }
-            .reveal .slides section { 
-                display: flex !important; 
-                flex-direction: column;
-                justify-content: center;
-                height: 100vh !important; 
-                page-break-after: always !important; 
-                opacity: 1 !important; 
-                visibility: visible !important;
-            }
+            .reveal .slides section { display: flex !important; flex-direction: column; justify-content: center; height: 100vh !important; page-break-after: always !important; opacity: 1 !important; visibility: visible !important; }
             .highlight { color: #0056b3 !important; }
             .profit { color: #28a745 !important; }
-            .metric-box { border: 2px solid #ccc; background: #f9f9f9; }
-            .metric-box h3 { color: #555; }
-            .metric-box h2 { color: #000; }
+            .tier-box { border: 2px solid #ccc; background: #f9f9f9; }
+            .tier-box h3, .tier-box .price { color: #000; }
             .controls, .progress, .state-background { display: none !important; }
         }
     </style>
@@ -117,36 +127,57 @@
             </div>
         </section>
 
-        <!-- Slide 3 -->
+        <!-- Slide 3: Pricing Tiers -->
         <section data-transition="zoom">
-            <h2>Unit Economics <span style="color:#666; font-size: 0.6em;">(Productized SaaS)</span></h2>
-            <div style="display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 10px;">
-                <div class="metric-box fragment flip-up" data-fragment-index="1">
-                    <h3>Setup Fee</h3>
-                    <h2>100k PKR</h2>
+            <h2>Productized SaaS Tiers</h2>
+            <p style="font-size: 0.9em; color: #aaa; margin-top: -10px;">Tailored solutions from simple bots to full ERP swarms.</p>
+            
+            <div class="pricing-container">
+                <!-- Tier 1 -->
+                <div class="tier-box fragment fade-up" data-fragment-index="1">
+                    <h3>Starter</h3>
+                    <div class="price">15k <span style="font-size: 0.5em; color: #888;">PKR/mo</span></div>
+                    <div class="setup">50k Setup Fee</div>
+                    <ul>
+                        <li>Simple WhatsApp Bot</li>
+                        <li>Basic Q&A / FAQs</li>
+                        <li>Lead Generation</li>
+                    </ul>
                 </div>
-                <div class="metric-box fragment flip-up" data-fragment-index="2">
-                    <h3>MRR (License)</h3>
-                    <h2>30k PKR</h2>
+                <!-- Tier 2 -->
+                <div class="tier-box popular fragment fade-up" data-fragment-index="2">
+                    <div class="tier-badge">MOST POPULAR</div>
+                    <h3 style="color: #00ff88;">Pro Swarm</h3>
+                    <div class="price" style="color: #00ff88;">30k <span style="font-size: 0.5em; color: #888;">PKR/mo</span></div>
+                    <div class="setup">150k Setup Fee</div>
+                    <ul>
+                        <li>Full Google Sheets ERP</li>
+                        <li>Voice Note Parsing (Urdu)</li>
+                        <li>Auto PDF Receipts</li>
+                    </ul>
                 </div>
-                <div class="metric-box fragment flip-up" style="border-color: #00ff88;" data-fragment-index="3">
-                    <h3>Gross Margin</h3>
-                    <h2 class="profit">80%</h2>
-                </div>
-                <div class="metric-box fragment flip-up" style="border-color: #00d2ff;" data-fragment-index="4">
-                    <h3>CAC : LTV</h3>
-                    <h2 class="highlight">1 : 16.4</h2>
+                <!-- Tier 3 -->
+                <div class="tier-box fragment fade-up" data-fragment-index="3">
+                    <h3>Enterprise</h3>
+                    <div class="price">60k <span style="font-size: 0.5em; color: #888;">PKR/mo</span></div>
+                    <div class="setup">350k Setup Fee</div>
+                    <ul>
+                        <li>Multi-Department Agents</li>
+                        <li>Custom Dashboards</li>
+                        <li>Advanced API Integration</li>
+                    </ul>
                 </div>
             </div>
-            <p class="fragment fade-in" style="font-size: 0.8em; color: #888; margin-top: 0px;">*CAC: 50k PKR | LTV: 820k PKR (24 mo. retention)</p>
         </section>
 
-        <!-- Slide 4 -->
+        <!-- Slide 4: Break-Even Infographic -->
         <section data-transition="slide">
-            <h2>"Geo-Arbitrage" Trajectory</h2>
-            <p style="font-size: 0.9em; color: #aaa; margin-bottom: 10px;">Hover to see interactive data.</p>
+            <h2>The Path to Break-Even</h2>
+            <p style="font-size: 0.9em; margin-top: -10px;">
+                With an average blended MRR of <span class="highlight">35,000 PKR</span> and Lean Burn Rate of <span class="danger">350,000 PKR</span>,<br>we hit profitability at exactly <b>Client #10</b>.
+            </p>
             <div class="chart-container">
-                <canvas id="revenueChart"></canvas>
+                <canvas id="breakEvenChart"></canvas>
             </div>
         </section>
 
@@ -176,7 +207,7 @@
             </div>
             
             <p class="fragment fade-up" style="margin-top: 20px; font-weight: bold; font-size: 1.1em;">
-                We hit <span class="profit">Break-Even in Month 3</span> at 20 clients.
+                Achieving <span class="profit">Default Alive</span> at just 10 Clients.
             </p>
         </section>
 
@@ -191,7 +222,6 @@
         center: true,
         hash: true,
         transition: 'slide',
-        // Scaling config specifically for laptop screens
         width: 1024,
         height: 700,
         margin: 0.04,
@@ -201,51 +231,49 @@
 
     Reveal.on('slidechanged', event => {
         if(event.indexh === 3) {
-            const ctx = document.getElementById('revenueChart').getContext('2d');
+            const ctx = document.getElementById('breakEvenChart').getContext('2d');
             
-            if(window.myChart) return;
+            if(window.breakEvenChart) return;
             
-            window.myChart = new Chart(ctx, {
-                type: 'bar',
+            window.breakEvenChart = new Chart(ctx, {
+                type: 'line',
                 data: {
-                    labels: ['Month 3', 'Month 6', 'Year 1', 'Year 2'],
+                    labels: ['0', '2', '4', '6', '8', '10 (Break-Even)', '12', '14'],
                     datasets: [
                         {
-                            label: 'MRR',
-                            data: [600000, 1500000, 4500000, 12000000],
-                            backgroundColor: 'rgba(0, 255, 136, 0.7)',
-                            borderColor: 'rgba(0, 255, 136, 1)',
-                            borderWidth: 2,
-                            borderRadius: 8,
-                            hoverBackgroundColor: 'rgba(0, 255, 136, 1)',
-                            hoverBorderWidth: 4
+                            label: 'Monthly Recurring Revenue (MRR)',
+                            data: [0, 70000, 140000, 210000, 280000, 350000, 420000, 490000],
+                            borderColor: '#00ff88',
+                            backgroundColor: 'rgba(0, 255, 136, 0.2)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.1,
+                            pointBackgroundColor: '#00ff88',
+                            pointRadius: 5,
+                            pointHoverRadius: 8
                         },
                         {
-                            label: 'Capital/Setup',
-                            data: [2000000, 3000000, 5000000, 8000000],
-                            backgroundColor: 'rgba(0, 210, 255, 0.7)',
-                            borderColor: 'rgba(0, 210, 255, 1)',
+                            label: 'Monthly Burn Rate (Fixed Costs)',
+                            data: [350000, 350000, 350000, 350000, 350000, 350000, 350000, 350000],
+                            borderColor: '#ff4444',
                             borderWidth: 2,
-                            borderRadius: 8,
-                            hoverBackgroundColor: 'rgba(0, 210, 255, 1)',
-                            hoverBorderWidth: 4
+                            borderDash: [5, 5],
+                            fill: false,
+                            pointRadius: 0
                         }
                     ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false,
-                    },
+                    interaction: { mode: 'index', intersect: false },
                     plugins: {
-                        legend: { labels: { color: '#fff', font: { size: 12 } }, position: 'bottom' },
+                        legend: { labels: { color: '#fff', font: { size: 14 } }, position: 'top' },
                         tooltip: {
                             backgroundColor: 'rgba(0,0,0,0.8)',
                             titleFont: { size: 14 },
-                            bodyFont: { size: 13 },
-                            padding: 10,
+                            bodyFont: { size: 14 },
+                            padding: 12,
                             borderColor: '#444',
                             borderWidth: 1,
                             callbacks: {
@@ -263,12 +291,15 @@
                     scales: {
                         y: { 
                             beginAtZero: true,
+                            suggestedMax: 500000,
+                            title: { display: true, text: 'PKR (Monthly)', color: '#aaa', font: { size: 14 } },
                             grid: { color: 'rgba(255,255,255,0.05)' },
-                            ticks: { color: '#aaa', callback: function(value) { return value / 1000000 + 'M'; } }
+                            ticks: { color: '#aaa', callback: function(value) { return value / 1000 + 'k'; } }
                         },
                         x: {
-                            grid: { display: false },
-                            ticks: { color: '#ccc', font: { size: 12 } }
+                            title: { display: true, text: 'Number of Active Clients', color: '#aaa', font: { size: 14 } },
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: '#ccc', font: { size: 14, weight: 'bold' } }
                         }
                     }
                 }
