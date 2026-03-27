@@ -15,43 +15,60 @@
             font-weight: 700;
             letter-spacing: -0.02em;
         }
+        
+        /* Adjusted font sizes for laptop screen */
+        .reveal h1 { font-size: 2.8em; margin-bottom: 10px; }
+        .reveal h2 { font-size: 1.8em; margin-bottom: 15px; }
+        .reveal h3 { font-size: 1.3em; margin-bottom: 10px; }
+        .reveal p { font-size: 1.1em; line-height: 1.4; margin: 10px 0; }
+
         .highlight { color: #00d2ff; font-weight: bold; }
         .profit { color: #00ff88; font-weight: bold; }
         
         .metric-box {
             display: inline-block;
             background: rgba(255,255,255,0.05);
-            padding: 20px 40px;
-            border-radius: 15px;
-            margin: 15px;
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin: 10px;
             border: 1px solid rgba(255,255,255,0.2);
             transition: transform 0.3s, background 0.3s;
         }
         .metric-box:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             background: rgba(255,255,255,0.15);
             cursor: pointer;
         }
-        .metric-box h3 { margin: 0; font-size: 1.5em; color: #888; }
-        .metric-box h2 { margin: 10px 0 0 0; font-size: 2.5em; color: #fff; }
+        .metric-box h3 { margin: 0; font-size: 1.1em; color: #888; }
+        .metric-box h2 { margin: 5px 0 0 0; font-size: 1.8em; color: #fff; }
 
         .fund-box {
             background: rgba(255,255,255,0.05);
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             width: 40%;
-            margin: 10px;
+            margin: 8px;
             transition: all 0.3s ease;
         }
         .fund-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
+        .fund-box h3 { font-size: 1.6em !important; margin: 0; }
+        .fund-box p { font-size: 0.9em !important; margin: 5px 0 0 0; }
 
         .chart-container {
             width: 90%;
             margin: 0 auto;
-            height: 450px;
+            height: 350px; /* Reduced height to fit laptop screens */
+        }
+
+        /* Container for Slide 2 to keep it tight */
+        .content-box {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1em;
         }
 
         @media print {
@@ -83,19 +100,19 @@
         <!-- Slide 1 -->
         <section data-transition="fade">
             <h3 class="fragment fade-down" style="color: #888;">AI with Ezzi</h3>
-            <h1 class="fragment zoom" style="font-size: 3.5em; margin-bottom: 20px;">Invisible Automation.</h1>
+            <h1 class="fragment zoom">Invisible Automation.</h1>
             <h2 class="fragment fade-up">Empowering the <span class="highlight">One-Person Business</span>.</h2>
         </section>
 
         <!-- Slide 2 -->
         <section data-transition="slide">
             <h2>The Market & The Moat</h2>
-            <div style="font-size: 1.2em; text-align: left; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+            <div class="content-box">
                 <p class="fragment fade-right">🎯 <b>Target:</b> Karachi Private Schools & Wholesalers.</p>
-                <p class="fragment fade-right">⚠️ <b>Problem:</b> Businesses hate learning new clunky apps. Admin work takes 5+ hours daily.</p>
-                <p class="fragment fade-right">💡 <b>Solution:</b> The OpenClaw WhatsApp Swarm. An admin sends an Urdu voice note: <i>"Ali paid 5,000 rupees fee."</i></p>
-                <p class="fragment fade-right" style="border-left: 4px solid #00ff88; padding-left: 15px; background: rgba(0,255,136,0.1);">
-                    🚀 <b>Result:</b> AI updates Google Sheets, generates a PDF receipt, and WhatsApps the parent in <span class="profit">4 seconds</span>.
+                <p class="fragment fade-right">⚠️ <b>Problem:</b> Businesses hate clunky apps. Admin work takes 5+ hours daily.</p>
+                <p class="fragment fade-right">💡 <b>Solution:</b> The OpenClaw WhatsApp Swarm. Voice note: <i>"Ali paid 5k rupees fee."</i></p>
+                <p class="fragment fade-right" style="border-left: 4px solid #00ff88; padding-left: 15px; background: rgba(0,255,136,0.1); padding-top: 10px; padding-bottom: 10px; margin-top: 15px;">
+                    🚀 <b>Result:</b> AI updates Sheets, creates a PDF, and WhatsApps the parent in <span class="profit">4 seconds</span>.
                 </p>
             </div>
         </section>
@@ -103,7 +120,7 @@
         <!-- Slide 3 -->
         <section data-transition="zoom">
             <h2>Unit Economics <span style="color:#666; font-size: 0.6em;">(Productized SaaS)</span></h2>
-            <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 10px;">
                 <div class="metric-box fragment flip-up" data-fragment-index="1">
                     <h3>Setup Fee</h3>
                     <h2>100k PKR</h2>
@@ -121,13 +138,13 @@
                     <h2 class="highlight">1 : 16.4</h2>
                 </div>
             </div>
-            <p class="fragment fade-in" style="font-size: 0.9em; color: #888; margin-top: 20px;">*CAC: 50k PKR | LTV: 820k PKR (24 mo. retention)</p>
+            <p class="fragment fade-in" style="font-size: 0.8em; color: #888; margin-top: 0px;">*CAC: 50k PKR | LTV: 820k PKR (24 mo. retention)</p>
         </section>
 
         <!-- Slide 4 -->
         <section data-transition="slide">
-            <h2>The "Geo-Arbitrage" Trajectory</h2>
-            <p style="font-size: 1em; color: #aaa; margin-bottom: 20px;">Hover over the bars to see interactive scaling data.</p>
+            <h2>"Geo-Arbitrage" Trajectory</h2>
+            <p style="font-size: 0.9em; color: #aaa; margin-bottom: 10px;">Hover to see interactive data.</p>
             <div class="chart-container">
                 <canvas id="revenueChart"></canvas>
             </div>
@@ -135,30 +152,30 @@
 
         <!-- Slide 5 -->
         <section data-transition="convex">
-            <h1 style="font-size: 3.5em; margin-bottom: 5px;">The Ask</h1>
-            <h2 class="profit fragment grow" style="font-size: 2.5em;">5,000,000 PKR</h2>
-            <p style="font-size: 1.3em; margin-bottom: 20px; color: #bbb;">For <span class="highlight">5% Equity</span></p>
+            <h1 style="margin-bottom: 0px;">The Ask</h1>
+            <h2 class="profit fragment grow" style="font-size: 2.2em; margin-top: 5px;">5,000,000 PKR</h2>
+            <p style="font-size: 1.1em; margin-bottom: 15px; margin-top: 0; color: #bbb;">For <span class="highlight">5% Equity</span></p>
             
-            <div style="display: flex; justify-content: center; flex-wrap: wrap; max-width: 900px; margin: 0 auto;">
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; max-width: 800px; margin: 0 auto;">
                 <div class="fund-box fragment zoom" style="border-bottom: 3px solid #ff4444;">
-                    <h3 style="color: #ff4444; margin: 0; font-size: 2em;">0%</h3>
-                    <p style="margin: 5px 0 0 0; font-size: 1em;">Fancy Offices</p>
+                    <h3 style="color: #ff4444;">0%</h3>
+                    <p>Fancy Offices</p>
                 </div>
                 <div class="fund-box fragment zoom" style="border-bottom: 3px solid #00ff88;">
-                    <h3 style="color: #00ff88; margin: 0; font-size: 2em;">40%</h3>
-                    <p style="margin: 5px 0 0 0; font-size: 1em;">AI Engineering Team</p>
+                    <h3 style="color: #00ff88;">40%</h3>
+                    <p>AI Engineering Team</p>
                 </div>
                 <div class="fund-box fragment zoom" style="border-bottom: 3px solid #00d2ff;">
-                    <h3 style="color: #00d2ff; margin: 0; font-size: 2em;">30%</h3>
-                    <p style="margin: 5px 0 0 0; font-size: 1em;">API Infrastructure</p>
+                    <h3 style="color: #00d2ff;">30%</h3>
+                    <p>API Infrastructure</p>
                 </div>
                 <div class="fund-box fragment zoom" style="border-bottom: 3px solid #ffc800;">
-                    <h3 style="color: #ffc800; margin: 0; font-size: 2em;">30%</h3>
-                    <p style="margin: 5px 0 0 0; font-size: 1em;">Client Acquisition</p>
+                    <h3 style="color: #ffc800;">30%</h3>
+                    <p>Client Acquisition</p>
                 </div>
             </div>
             
-            <p class="fragment fade-up" style="margin-top: 30px; font-weight: bold; font-size: 1.3em;">
+            <p class="fragment fade-up" style="margin-top: 20px; font-weight: bold; font-size: 1.1em;">
                 We hit <span class="profit">Break-Even in Month 3</span> at 20 clients.
             </p>
         </section>
@@ -173,7 +190,13 @@
         progress: true,
         center: true,
         hash: true,
-        transition: 'slide'
+        transition: 'slide',
+        // Scaling config specifically for laptop screens
+        width: 1024,
+        height: 700,
+        margin: 0.04,
+        minScale: 0.2,
+        maxScale: 2.0
     });
 
     Reveal.on('slidechanged', event => {
@@ -185,10 +208,10 @@
             window.myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Month 3 (Local)', 'Month 6 (Local)', 'Year 1 (Local + Int)', 'Year 2 (Geo-Arbitrage)'],
+                    labels: ['Month 3', 'Month 6', 'Year 1', 'Year 2'],
                     datasets: [
                         {
-                            label: 'Monthly Recurring Revenue (MRR)',
+                            label: 'MRR',
                             data: [600000, 1500000, 4500000, 12000000],
                             backgroundColor: 'rgba(0, 255, 136, 0.7)',
                             borderColor: 'rgba(0, 255, 136, 1)',
@@ -198,7 +221,7 @@
                             hoverBorderWidth: 4
                         },
                         {
-                            label: 'Setup Fees / Capital',
+                            label: 'Capital/Setup',
                             data: [2000000, 3000000, 5000000, 8000000],
                             backgroundColor: 'rgba(0, 210, 255, 0.7)',
                             borderColor: 'rgba(0, 210, 255, 1)',
@@ -217,12 +240,12 @@
                         intersect: false,
                     },
                     plugins: {
-                        legend: { labels: { color: '#fff', font: { size: 14 } } },
+                        legend: { labels: { color: '#fff', font: { size: 12 } }, position: 'bottom' },
                         tooltip: {
                             backgroundColor: 'rgba(0,0,0,0.8)',
-                            titleFont: { size: 16 },
-                            bodyFont: { size: 14 },
-                            padding: 15,
+                            titleFont: { size: 14 },
+                            bodyFont: { size: 13 },
+                            padding: 10,
                             borderColor: '#444',
                             borderWidth: 1,
                             callbacks: {
@@ -245,7 +268,7 @@
                         },
                         x: {
                             grid: { display: false },
-                            ticks: { color: '#ccc', font: { size: 14 } }
+                            ticks: { color: '#ccc', font: { size: 12 } }
                         }
                     }
                 }
